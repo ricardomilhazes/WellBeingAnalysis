@@ -1,0 +1,14 @@
+.dropdown {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 0.5em;
+}
+    
+.dropdown .first-dropdown {
+    width: 40%;
+}
+    
+.dropdown .second-dropdown {
+    width: 40%;
+}

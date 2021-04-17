@@ -12,5 +12,5 @@ from my_dash_app.views.home import home_view
 
 app.layout = home_view()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run_server(debug=True)
