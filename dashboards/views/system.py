@@ -4,8 +4,8 @@ import plotly.graph_objs as go
 import pandas as pd
 
 from dash.dependencies import Input, Output
-from my_dash_app.maindash import app
-from my_dash_app.data.load_data import load_data
+from dashboards.maindash import app
+from dashboards.data.load_data import load_data
 
 dates = ["2019-08-08:22:22.11", "2021-02-17:14:07.37", "2019-04-24:05:02.53"]
 dates.sort()

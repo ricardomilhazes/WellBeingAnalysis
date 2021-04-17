@@ -4,8 +4,8 @@ import plotly.graph_objs as go
 import pandas as pd
 
 from dash.dependencies import Input, Output
-from my_dash_app.maindash import app
-from my_dash_app.data.load_data import load_data
+from dashboards.maindash import app
+from dashboards.data.load_data import load_data
 
 domain_names = [
     "Database Systems",

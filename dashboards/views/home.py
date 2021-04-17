@@ -2,10 +2,10 @@ import dash
 import dash_html_components as html
 import dash_core_components as dcc
 
-from my_dash_app.maindash import app
-from my_dash_app.views.question import question_view
-from my_dash_app.views.session import session_view
-from my_dash_app.views.system import system_view
+from dashboards.maindash import app
+from dashboards.views.question import question_view
+from dashboards.views.session import session_view
+from dashboards.views.system import system_view
 from dash.dependencies import Input, Output
 
 

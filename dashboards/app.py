@@ -7,8 +7,8 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 parent_dir_path = os.path.abspath(os.path.join(dir_path, os.pardir))
 sys.path.insert(0, parent_dir_path)
 
-from my_dash_app.maindash import app
-from my_dash_app.views.home import home_view
+from dashboards.maindash import app
+from dashboards.views.home import home_view
 
 app.layout = home_view()
 
