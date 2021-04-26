@@ -1,151 +1,140 @@
 import dash_core_components as dcc
 import dash_html_components as html
-import plotly.graph_objs as go
 import pandas as pd
+import numpy as np
 
 from dash.dependencies import Input, Output
 from dashboards.maindash import app
-from dashboards.data.load_data import get_domains, get_subdomains, get_dates, get_users
+from dashboards.data.collector import question_col
+from dashboards.utils.graph import create_graph
+from dashboards.utils.stats import question_stats
+from dashboards.views.dropdowns import dropdowns
+from dashboards.views.panel import panel
 
-domain_names = get_domains("question")
-domain_names.sort()
+max_rating, min_rating, average_rating, size = question_stats(question_col.find())
 
-subdomain_names = get_subdomains("question")
-subdomain_names.sort()
-
-dates = get_dates("question")
-dates.sort()
-
-users = get_users("question")
-users.sort()
+fig = create_graph(average_rating)
 
 
 def question_view():
     return html.Div(
         children=[
-            html.Div(
-                className="dropdown",
-                children=[
-                    html.Label(
-                        children="Domain",
-                    ),
-                    html.Div(
-                        className="first-dropdown",
-                        children=dcc.Dropdown(
-                            id="dropdown-1",
-                            options=[{"label": k, "value": k} for k in domain_names],
-                        ),
-                    ),
-                    html.Div(className="center-text", children=html.P("to")),
-                    html.Div(
-                        className="second-dropdown",
-                        children=dcc.Dropdown(id="dropdown-2"),
-                    ),
-                ],
+            dropdowns(
+                "dropdown-1",
+                "dropdown-2",
+                "Domain",
+                question_col.distinct("question.domain"),
             ),
-            html.Div(
-                className="dropdown",
-                children=[
-                    html.Label(
-                        children="Subdomain",
-                    ),
-                    html.Div(
-                        className="first-dropdown",
-                        children=dcc.Dropdown(
-                            id="dropdown-3",
-                            options=[{"label": k, "value": k} for k in subdomain_names],
-                        ),
-                    ),
-                    html.Div(className="center-text", children=html.P("to")),
-                    html.Div(
-                        className="second-dropdown",
-                        children=dcc.Dropdown(id="dropdown-4"),
-                    ),
-                ],
+            dropdowns(
+                "dropdown-3",
+                "dropdown-4",
+                "Subdomain",
+                question_col.distinct("question.subdomain"),
             ),
-            html.Div(
-                className="dropdown",
-                children=[
-                    html.Label(
-                        children="Date",
-                    ),
-                    html.Div(
-                        className="first-dropdown",
-                        children=dcc.Dropdown(
-                            id="dropdown-5",
-                            options=[{"label": k, "value": k} for k in dates],
-                        ),
-                    ),
-                    html.Div(className="center-text", children=html.P("to")),
-                    html.Div(
-                        className="second-dropdown",
-                        children=dcc.Dropdown(id="dropdown-6"),
-                    ),
-                ],
+            dropdowns(
+                "dropdown-5", "dropdown-6", "Date", question_col.distinct("date.date")
             ),
-            html.Div(
-                className="dropdown",
-                children=[
-                    html.Label(
-                        children="User",
-                    ),
-                    html.Div(
-                        className="first-dropdown",
-                        children=dcc.Dropdown(
-                            id="dropdown-7",
-                            options=[{"label": k, "value": k} for k in users],
-                        ),
-                    ),
-                    html.Div(className="center-text", children=html.P("to")),
-                    html.Div(
-                        className="second-dropdown",
-                        children=dcc.Dropdown(id="dropdown-8"),
-                    ),
-                ],
+            dropdowns(
+                "dropdown-7", "dropdown-8", "User", question_col.distinct("user")
             ),
+            panel(size, max_rating, min_rating, fig, "entries", "max-elem", "min-elem", "updated-graph")
         ]
     )
 
 
 @app.callback(
     Output("dropdown-2", "options"),
-    Output("dropdown-2", "value"),
     Input("dropdown-1", "value"),
 )
 def update_domain_dropdown_options(selected_domain):
     return [
-        {"label": k, "value": k} for k in domain_names if selected_domain <= k
-    ], selected_domain
+        {"label": k, "value": k}
+        for k in question_col.distinct("question.domain")
+        if selected_domain <= k
+    ]
 
 
 @app.callback(
     Output("dropdown-4", "options"),
-    Output("dropdown-4", "value"),
     Input("dropdown-3", "value"),
 )
 def update_subdomain_dropdown_options(selected_subdomain):
     return [
-        {"label": k, "value": k} for k in subdomain_names if selected_subdomain <= k
-    ], selected_subdomain
+        {"label": k, "value": k}
+        for k in question_col.distinct("question.subdomain")
+        if selected_subdomain <= k
+    ]
 
 
 @app.callback(
     Output("dropdown-6", "options"),
-    Output("dropdown-6", "value"),
     Input("dropdown-5", "value"),
 )
 def update_date_dropdown_options(selected_date):
     return [
-        {"label": k, "value": k} for k in dates if selected_date <= k
-    ], selected_date
+        {"label": k, "value": k}
+        for k in question_col.distinct("date.date")
+        if selected_date <= k
+    ]
 
 
 @app.callback(
     Output("dropdown-8", "options"),
-    Output("dropdown-8", "value"),
     Input("dropdown-7", "value"),
 )
 def update_user_dropdown_options(selected_user):
     return [
-        {"label": k, "value": k} for k in users if selected_user <= k
-    ], selected_user
+        {"label": k, "value": k}
+        for k in question_col.distinct("user")
+        if selected_user <= k
+    ]
+
+
+@app.callback(
+    Output("entries", "children"),
+    Output("max-elem", "children"),
+    Output("min-elem", "children"),
+    Output("updated-graph", "figure"),
+    Input("dropdown-1", "value"),
+    Input("dropdown-2", "value"),
+    Input("dropdown-3", "value"),
+    Input("dropdown-4", "value"),
+    Input("dropdown-5", "value"),
+    Input("dropdown-6", "value"),
+    Input("dropdown-7", "value"),
+    Input("dropdown-8", "value"),
+)
+def update_figure(
+    first_domain,
+    second_domain,
+    first_subdomain,
+    second_subdomain,
+    first_date,
+    second_date,
+    first_user,
+    second_user,
+):
+    cursor = question_col.find(
+        {
+            "question.domain": {"$gte": first_domain, "$lte": second_domain},
+            "question.subdomain": {
+                "$gte": first_subdomain,
+                "$lte": second_subdomain,
+            },
+            "date.date": {"$gte": first_date, "$lte": second_date},
+            "user": {"$gte": first_user, "$lte": second_user},
+        }
+    )
+
+    if cursor.count() <= 0:
+        fig = create_graph(0.00)
+        size = 0
+        max_rating = "No value"
+        min_rating = "No value"
+        
+        return size, max_rating, min_rating, fig
+    
+    max_rating, min_rating, average_rating, size = question_stats(cursor)
+    fig = create_graph(average_rating)
+
+    return size, max_rating, min_rating, fig

@@ -5,103 +5,30 @@ import pandas as pd
 
 from dash.dependencies import Input, Output
 from dashboards.maindash import app
-from dashboards.data.load_data import get_domains, get_subdomains, get_dates, get_users
-
-domain_names = get_domains("session")
-domain_names.sort()
-
-subdomain_names = get_subdomains("session")
-subdomain_names.sort()
-
-dates = get_dates("session")
-dates.sort()
-
-users = get_users("session")
-users.sort()
+from dashboards.data.collector import session_col
+from dashboards.views.dropdowns import dropdowns
 
 
 def session_view():
     return html.Div(
         children=[
-            html.Div(
-                className="dropdown",
-                children=[
-                    html.Label(
-                        children="Domain",
-                    ),
-                    html.Div(
-                        className="first-dropdown",
-                        children=dcc.Dropdown(
-                            id="dropdown-9",
-                            options=[{"label": k, "value": k} for k in domain_names],
-                        ),
-                    ),
-                    html.Div(className="center-text", children=html.P("to")),
-                    html.Div(
-                        className="second-dropdown",
-                        children=dcc.Dropdown(id="dropdown-10"),
-                    ),
-                ],
+            dropdowns(
+                "dropdown-9",
+                "dropdown-10",
+                "Domain",
+                session_col.distinct("question.domain"),
             ),
-            html.Div(
-                className="dropdown",
-                children=[
-                    html.Label(
-                        children="Subdomain",
-                    ),
-                    html.Div(
-                        className="first-dropdown",
-                        children=dcc.Dropdown(
-                            id="dropdown-11",
-                            options=[{"label": k, "value": k} for k in subdomain_names],
-                        ),
-                    ),
-                    html.Div(className="center-text", children=html.P("to")),
-                    html.Div(
-                        className="second-dropdown",
-                        children=dcc.Dropdown(id="dropdown-12"),
-                    ),
-                ],
+            dropdowns(
+                "dropdown-11",
+                "dropdown-12",
+                "Subomain",
+                session_col.distinct("question.subdomain"),
             ),
-            html.Div(
-                className="dropdown",
-                children=[
-                    html.Label(
-                        children="Date",
-                    ),
-                    html.Div(
-                        className="first-dropdown",
-                        children=dcc.Dropdown(
-                            id="dropdown-13",
-                            options=[{"label": k, "value": k} for k in dates],
-                        ),
-                    ),
-                    html.Div(className="center-text", children=html.P("to")),
-                    html.Div(
-                        className="second-dropdown",
-                        children=dcc.Dropdown(id="dropdown-14"),
-                    ),
-                ],
+            dropdowns(
+                "dropdown-13", "dropdown-14", "Date", session_col.distinct("date.date")
             ),
-            html.Div(
-                className="dropdown",
-                children=[
-                    html.Label(
-                        children="User",
-                    ),
-                    html.Div(
-                        className="first-dropdown",
-                        children=dcc.Dropdown(
-                            id="dropdown-15",
-                            options=[{"label": k, "value": k} for k in users],
-                        ),
-                    ),
-                    html.Div(className="center-text", children=html.P("to")),
-                    html.Div(
-                        className="second-dropdown",
-                        children=dcc.Dropdown(id="dropdown-16"),
-                    ),
-                ],
+            dropdowns(
+                "dropdown-15", "dropdown-16", "User", session_col.distinct("user")
             ),
         ]
     )
@@ -114,7 +41,9 @@ def session_view():
 )
 def update_domain_dropdown_options(selected_domain):
     return [
-        {"label": k, "value": k} for k in domain_names if selected_domain <= k
+        {"label": k, "value": k}
+        for k in session_col.distinct("question.domain")
+        if selected_domain <= k
     ], selected_domain
 
 
@@ -125,7 +54,9 @@ def update_domain_dropdown_options(selected_domain):
 )
 def update_subdomain_dropdown_options(selected_subdomain):
     return [
-        {"label": k, "value": k} for k in subdomain_names if selected_subdomain <= k
+        {"label": k, "value": k}
+        for k in session_col.distinct("question.subdomain")
+        if selected_subdomain <= k
     ], selected_subdomain
 
 
@@ -136,7 +67,9 @@ def update_subdomain_dropdown_options(selected_subdomain):
 )
 def update_date_dropdown_options(selected_date):
     return [
-        {"label": k, "value": k} for k in dates if selected_date <= k
+        {"label": k, "value": k}
+        for k in session_col.distinct("date.date")
+        if selected_date <= k
     ], selected_date
 
 
@@ -147,5 +80,7 @@ def update_date_dropdown_options(selected_date):
 )
 def update_user_dropdown_options(selected_user):
     return [
-        {"label": k, "value": k} for k in users if selected_user <= k
+        {"label": k, "value": k}
+        for k in session_col.distinct("user")
+        if selected_user <= k
     ], selected_user
