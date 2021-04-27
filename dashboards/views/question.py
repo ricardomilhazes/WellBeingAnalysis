@@ -37,7 +37,16 @@ def question_view():
             dropdowns(
                 "dropdown-7", "dropdown-8", "User", question_col.distinct("user")
             ),
-            panel(size, max_rating, min_rating, fig, "entries", "max-elem", "min-elem", "updated-graph")
+            panel(
+                size,
+                max_rating,
+                min_rating,
+                fig,
+                "entries",
+                "max-elem",
+                "min-elem",
+                "updated-graph",
+            ),
         ]
     )
 
@@ -131,9 +140,9 @@ def update_figure(
         size = 0
         max_rating = "No value"
         min_rating = "No value"
-        
+
         return size, max_rating, min_rating, fig
-    
+
     max_rating, min_rating, average_rating, size = question_stats(cursor)
     fig = create_graph(average_rating)
 
