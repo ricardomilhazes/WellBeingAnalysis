@@ -56,3 +56,15 @@ target/
 # VisualStudioCode Patch
 ## Ignore all local history of files
 **/.history
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# Data
+reviews.csv
+
+# .vscode settings
+.vscode
