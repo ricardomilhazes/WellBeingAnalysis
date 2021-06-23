@@ -1,5 +1,3 @@
-[![Build status](https://github.com/ricardomilhazes/WellBeingAnalysis/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/ricardomilhazes/WellBeingAnalysis/actions?query=workflow%3Abuild)
-
 # WellBeingAnalysis
 Well-being Analysis is a thesis, which consists in creating well-being indexes through sentiment analysis of user reviews.
 
