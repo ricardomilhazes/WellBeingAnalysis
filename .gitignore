@@ -64,7 +64,7 @@ env/
 venv/
 
 # Data
-reviews.csv
+data/
 
 # .vscode settings
 .vscode
