@@ -5,7 +5,6 @@ import pandas as pd
 
 from bs4 import BeautifulSoup
 from langdetect import detect
-from requests.api import get
 
 reviews = []
 n_pages = 10
