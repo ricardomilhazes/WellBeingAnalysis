@@ -1,0 +1,194 @@
+{
+    "Reviews": [
+        {
+            "Id": "0000",
+            "Opinion": "Great hotel, beautiful rooms and excellent service. Definitely recommended! Very helpful reception and excellent food. The rooms are very clean and they are really considered about the details. The driver that took us to see the city knew everything and was a wonderful experience.",
+            "Rate": "5",
+            "Elements": [
+                {
+                    "Element": "room",
+                    "Occurrence": "2"
+                },
+                {
+                    "Element": "service",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "reception",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "clean",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "driver",
+                    "Occurrence": "1"
+                }
+            ]
+        },
+        {
+            "Id": "0000",
+            "Opinion": "Lovely hotel in an excellent location. Rooms are spotless & clean, breakfast is plentiful. Staff are very helpful and friendly Good location just walking distance of restaurants or shopping mall. It's glad to be back again with our family.",
+            "Rate": "5",
+            "Elements": [
+                {
+                    "Element": "location",
+                    "Occurrence": "2"
+                },
+                {
+                    "Element": "room",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "clean",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "staff",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "restaurant",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "shopping",
+                    "Occurrence": "1"
+                }
+            ]
+        },
+        {
+            "Id": "0000",
+            "Opinion": "In chronological order; arrived at the hotel (car park space is very limited and dark) and went to reception (lobby area is also very dark) for check-in. Went up the elevator; opened the door, and found the room as pictured. Immediately went back down to the reception and return the key while telling them the room is absolutely disgusting - it hasn't been cleaned, smells of cigarette smoke, carpet's very dirty, water damage on ceiling, etc. The response from reception was: 'oh ok, thank you'. Do yourself a favor, and stay away from this hotel.",
+            "Rate": "1",
+            "Elements": [
+                {
+                    "Element": "parking",
+                    "Occurrence": "2"
+                },
+                {
+                    "Element": "reception",
+                    "Occurrence": "3"
+                },
+                {
+                    "Element": "room",
+                    "Occurrence": "2"
+                },
+                {
+                    "Element": "clean",
+                    "Occurrence": "1"
+                }
+            ]
+        },
+        {
+            "Id": "0000",
+            "Opinion": "The hotel is located in Braga Street, excellent area in the heart of Bandung. The hotel is just a walking distance from tons of restaurants, cafes, and bars. It serves good breakfast, has nice staffs, and adequate services. The downside is that this hotel looks worn-out, it feels old and some of its furnitures are already tainted or even cracked. Overall it is a good hotel.",
+            "Rate": "4",
+            "Elements": [
+                {
+                    "Element": "location",
+                    "Occurrence": "2"
+                },
+                {
+                    "Element": "restaurant",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "cafe",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "bar",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "breakfast",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "staff",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "service",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "old",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "furniture",
+                    "Occurrence": "1"
+                }
+            ]
+        },
+        {
+            "Id": "0000",
+            "Opinion": " Pros: - Strategically placed in the middle of popular jalan Braga, surrounded by cafes, bars, and restaurants - Good breakfast though could be more varied Cons: - Rooms are small - Very very bad carpeting. It was worn out and dirty, I wore sandals all the time I was in the bedroom",
+            "Rate": "3",
+            "Elements": [
+                {
+                    "Element": "location",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "cafe",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "bar",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "restaurant",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "breakfast",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "room",
+                    "Occurrence": "2"
+                },
+                {
+                    "Element": "dirty",
+                    "Occurrence": "1"
+                }
+            ]
+        },
+        {
+            "Id": "0000",
+            "Opinion": " upon check in we get the room which the condition of the room given the smoking room but the room uses carpet and smell. when the morning shower at the shower time the warm water does not work after waiting for approximately half an hour and until finished bathing, but we do not mind it hoping other services can be satisfying. but when we have breakfast, we turn on the please make up room near the door and ask the staff to change the linen too due to when I wake up in the morning my body itches because the condition of the linen smells musty and not clean. after finishing breakfast, the room has not been cleaned. at noon, we go outside for lunch and leave a message again to the housekeeping on duty also confirm the reception for the room cleaned, but returned from lunch, the condition of the room is still in a mess. I still waited until my husband was sleepy and wanted to take a short break that afternoon and asked the houseeking officer to clean the room when he woke up or would come out again for dinner. and returned, we left a message to the receptionist for the room to be cleaned, but again and again it was a pity, we returned to the hotel at 10pm we saw the condition of the room which was still in disarray. we confirmed to the reception and they argued that we installed the D & D sign, even though it wasn't at all, and it was repeatedly confirmed from morning to night. but after about 15 minutes passed there was still no officer coming, after we confirmed to the reception again, only about 5 minutes the housekeeping staff came to clean the room, emotions were quite high, because the condition was tired all day doing activities but getting bad service like this!!!.",
+            "Rate": "2",
+            "Elements": [
+                {
+                    "Element": "room",
+                    "Occurrence": "7"
+                },
+                {
+                    "Element": "bath",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "service",
+                    "Occurrence": "2"
+                },
+                {
+                    "Element": "breakfast",
+                    "Occurrence": "1"
+                },
+                {
+                    "Element": "clean",
+                    "Occurrence": "3"
+                },
+                {
+                    "Element": "reception",
+                    "Occurrence": "3"
+                }
+            ]
+        }
+    ]
+}
